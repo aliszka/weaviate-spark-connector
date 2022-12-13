@@ -1,3 +1,5 @@
+import ReleaseTransformations._
+
 ThisBuild / scalaVersion := "2.12.17"
 
 lazy val root = (project in file("."))
@@ -58,3 +60,18 @@ publishTo := sonatypePublishToBundle.value
 sonatypeCredentialHost := "s01.oss.sonatype.org"
 sonatypeRepository := "https://s01.oss.sonatype.org/service/local"
 sonatypeProfileName := "technology.semi"
+
+// Custom release process
+releaseProcess := Seq[ReleaseStep](
+  checkSnapshotDependencies,
+  inquireVersions,
+  runClean,
+  runTest,
+  setReleaseVersion,
+  commitReleaseVersion,
+  tagRelease,
+//  publishArtifacts,   // done by CI on tag push
+  setNextVersion,
+  commitNextVersion,
+//  pushChanges         // done manually
+)
