@@ -54,8 +54,9 @@ ThisBuild / licenses := List(
 ThisBuild / homepage := Some(url("https://github.com/semi-technologies/weaviate-spark-connector"))
 
 // Remove all additional repository other than Maven Central from POM
-ThisBuild / pomIncludeRepository := { _ => false }
-ThisBuild / publishMavenStyle := true
-ThisBuild / publishTo := sonatypePublishToBundle.value
-ThisBuild / sonatypeCredentialHost := "s01.oss.sonatype.org"
-ThisBuild / sonatypeRepository := "https://s01.oss.sonatype.org/service/local"
+pomIncludeRepository := { _ => false }
+publishMavenStyle := true
+publishTo := sonatypePublishToBundle.value
+sonatypeCredentialHost := "s01.oss.sonatype.org"
+sonatypeRepository := "https://s01.oss.sonatype.org/service/local"
+sonatypeProfileName := "technology.semi"
